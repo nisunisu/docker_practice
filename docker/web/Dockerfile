@@ -1,2 +1,2 @@
 FROM  nginx:latest
-RUN echo "now building..."
+COPY ./nginx.conf /etc/nginx.conf
