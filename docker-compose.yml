@@ -1,0 +1,11 @@
+# versionは非推奨になった
+# https://github.com/compose-spec/compose-spec/blob/master/spec.md#compose-file
+# > The Compose file is a YAML file defining version (DEPRECATED), services (REQUIRED), networks, volumes, configs and secrets. 
+# version: '3.8'
+
+services:
+  nginx:
+    build: ./docker/web
+    ports:
+      - "8080:80"
+    container_name: "compose-nginx"
