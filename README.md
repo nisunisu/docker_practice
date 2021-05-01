@@ -1,14 +1,19 @@
 # Docker compose
 1. Prepaere Dockerfile
-1. Run `docker compose`
+1. Create image (**When Dockerfile is changed, must do this procedure**)
     ```zsh
-    # Launch specific container and exec
+    docker compose build --no-cache    
+    ```
+1. Create a specific container and exec it
+    ```zsh
     # service name is specified in docker-compose.yml
     docker compose run ${compose_service_name} bash
-
-    # Run
+    ```
+1. Create the set of containers and run it
+    ```zsh
+    # Up
     docker compose up
-    docker compose up -d # background
+    docker compose up -d # runs in background
 
     # If nginx service does not run correctly, try some of them
     #   1. Use `--forece-recreate` option
