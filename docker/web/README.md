@@ -57,7 +57,7 @@
 1. Login to ECR
     ```shell
     # Get URL from URI.
-    aws_repo_url=${aws_repo_uri%%/*} # Remove "/*" by paramete expantion
+    aws_repo_url=${aws_repo_uri%%/*} # Remove "/*" by parameter expantion
     
     # Remove current login info
     docker logout
