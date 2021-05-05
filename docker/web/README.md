@@ -33,6 +33,30 @@
     ```
 
 # Register my docker images to AWS ECR
+
+## Optional : When you use M1 mac to create images
+
+With ARM cpu machine, the image you build has ARM64 architecture and it doesn't work with amd64 machine. So use `docker buildx` to create and push images as follows.
+
+1. Build settings
+    ```zsh
+    docker buildx create --name multi_cpu_architecture
+    docker buildx use multi_cpu_architecture
+    docker buildx ls # Now "*" marks at "multi_cpu_architecture"
+    tag_name="${aws_repo_uri}:latest"
+    ```
+1. Login to ECR (See : [Login to ECR](#procedures))
+1. Build image and push it to ECR
+    ```zsh
+    docker buildx build --platform linux/amd64,linux/arm64 -t ${tag_name} --push .
+    ```
+1. Check architecture on EC2, mac etc...
+    ```zsh
+    docker pull ${tag_name}
+    docker inspect ${tag_name} | jq '.[].Architecture' # M1 : arm64, x64 machine : amd64
+    ```
+
+
 ## Prerequisite
 1. Create docker image (See : [Dockerfile](#dockerfile))
 
