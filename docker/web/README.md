@@ -39,9 +39,9 @@
 ## Procedures
 1. Set env
     ```shell
-    aws_ecr_repo_name="hello-repository"
+    aws_ecr_repo_name="my_nginx_ecr"
     region="ap-northeast-1"
-    tag_name="hoge" # The tag you upload to ECR. Select from `docker images`
+    tag_name="my_nginx" # The tag you upload to ECR. Select from `docker images`
     ```
 1. Create ECR repository
     ```shell
